@@ -1,21 +1,20 @@
 import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ChipShop from "./src/components/ChipShop";
 import LoginScreen from "./src/components/LoginScreen";
-import AdminPanel from "./src/screens/AdminPanel";
-import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
-
-const Stack = createStackNavigator();
+import GameScreen from "./src/components/GameScreen";
 
 function App() {
   return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="LoginScreen">
-        <Stack.Screen name="LoginScreen" component={LoginScreen} />
-        <Stack.Screen name="ChipShop" component={ChipShop} />
-        <Stack.Screen name="AdminPanel" component={AdminPanel} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <Router>
+      <div className="min-h-screen bg-gray-100 flex items-center justify-center">
+        <Routes>
+          <Route path="/" element={<LoginScreen />} />
+          <Route path="/shop" element={<ChipShop />} />
+          <Route path="/game" element={<GameScreen />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
